@@ -87,17 +87,24 @@ Item {
 
 
     // Font
-    readonly property string fontFamily: 'Open Sans'
+    
+    readonly property string fontRegular: evesansneueRegular.name
+    readonly property string fontBold: evesansneueBold.name
+    readonly property string fontItalic: evesansneueItalic.name
+    readonly property string fontCondensed: evesansneueCondensed.name
     readonly property int fontContentSize: 11
     readonly property int fontSubTitleSize: 13
     readonly property int fontTitleSize: 17
 
     readonly property int headerSize: 32
+    FontLoader { id: evesansneueRegular; source: '../Fonts/evesansneue-regular.otf' }
+    FontLoader { id: evesansneueBold; source: '../Fonts/evesansneue-bold.otf' }
+    FontLoader { id: evesansneueItalic; source: '../Fonts/evesansneue-italic.otf' }
+    FontLoader { id: evesansneueCondensed; source: '../Fonts/evesansneue-condensed.otf' }
+
 
     // Animations
     readonly property int themeAnimSpeed: 300
-
     Behavior on background { ColorAnimation { duration: 300; easing.type: Easing.InOutQuad; } }
     Behavior on foreground { ColorAnimation { duration: 300; easing.type: Easing.InOutQuad; } }
-    // Behavior on accent { ColorAnimation { duration: 300; easing.type: Easing.InOutQuad; } }
 }

@@ -23,17 +23,17 @@ ApplicationWindow {
 
     ColumnLayout {
         anchors.fill: parent
-        ComboBox {
+        EComboBox {
             id: blueprintDropdown
         }
         
-        Button {
+        EButton {
             text: qsTr('Update')
             onClicked: {
                 Backend.updateBlueprintData()
             }
         }   
-        Button {
+        EButton {
             text: qsTr('Load')
             onClicked: {
                 Backend.loadBlueprintData()

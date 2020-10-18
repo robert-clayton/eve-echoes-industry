@@ -14,7 +14,6 @@ class Backend(QtCore.QObject):
         else:
             self.sheetBlueprints = self.loadBlueprintData()
 
-    
     def transposeBlueprintData(self, blueprintData):
         temp = defaultdict(dict)
         for blueprint in self.sheetBlueprints:
@@ -42,4 +41,4 @@ class Backend(QtCore.QObject):
     
     @QtCore.Slot(result="QStringList")
     def listBlueprints(self):
-        return self.sheetBlueprints.keys()
+        return sorted(self.sheetBlueprints.keys())

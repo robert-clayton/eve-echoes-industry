@@ -1,6 +1,6 @@
 import sys
 import os
-from PySide2 import QtWidgets, QtQml, QtCore
+from PySide2 import QtWidgets, QtQml, QtCore, QtGui
 from . import Backend
 
 app = QtWidgets.QApplication(sys.argv)
@@ -14,12 +14,14 @@ backend = Backend.Backend()
 engine = QtQml.QQmlApplicationEngine()
 engine.rootContext().setContextProperty("Backend", backend)
 
+
 if hasattr(sys, 'frozen'):
     from . import QMLPacked
     engine.load(':/GUI.qml')
 else:
     path = os.path.dirname(os.path.abspath(__file__))
     engine.load(QtCore.QUrl.fromLocalFile(os.path.join(path, 'qml', 'GUI.qml')))
+    
 
 if not engine.rootObjects():
     sys.exit(-1)
