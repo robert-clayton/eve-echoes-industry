@@ -9,7 +9,6 @@ Item {
     Settings {
         id: settings
         category: 'Settings'
-        property alias dockPosition: styling.dockPosition
         property alias theme: styling.theme
     }
 
@@ -21,45 +20,41 @@ Item {
         Amarr,
         AmarrAlt,
         Gallente,
-        GallenteAlt,
+        GallenteAlt
     }
-
 
     // Styling
     readonly property int radius: 5
     readonly property int controlWidth: 225
     readonly property int controlHeight: 29
-    property int theme: Caldari
+    property int theme: Style.Theme.Caldari
 
-    
     // Theme
     property color background: {
         switch(theme) {
-            case Theme.Caldari: caldariBG; break;
-            case Theme.CaldariAlt: caldariBGAlt; break;
-            case Theme.Minmatar: minmatarBG; break;
-            case Theme.MinmatarAlt: minmatarBGAlt; break;
-            case Theme.Amarr: amarrBG; break;
-            case Theme.AmarrAlt: amarrBGAlt; break;
-            case Theme.Gallente: gallenteBG; break;
-            case Theme.GallenteAlt: gallenteBGAlt; break;
+            case Style.Theme.Caldari: caldariBG; break;
+            case Style.Theme.CaldariAlt: caldariBGAlt; break;
+            case Style.Theme.Minmatar: minmatarBG; break;
+            case Style.Theme.MinmatarAlt: minmatarBGAlt; break;
+            case Style.Theme.Amarr: amarrBG; break;
+            case Style.Theme.AmarrAlt: amarrBGAlt; break;
+            case Style.Theme.Gallente: gallenteBG; break;
+            case Style.Theme.GallenteAlt: gallenteBGAlt; break;
         }
     }
 
     property color foreground: {
         switch(theme) {
-            case Theme.Caldari: caldariFG; break;
-            case Theme.CaldariAlt: caldariFGAlt; break;
-            case Theme.Minmatar: minmatarFG; break;
-            case Theme.MinmatarAlt: minmatarFGAlt; break;
-            case Theme.Amarr: amarrFG; break;
-            case Theme.AmarrAlt: amarrFGAlt; break;
-            case Theme.Gallente: gallenteFG; break;
-            case Theme.GallenteAlt: gallenteFGAlt; break;
+            case Style.Theme.Caldari: caldariFG; break;
+            case Style.Theme.CaldariAlt: caldariFGAlt; break;
+            case Style.Theme.Minmatar: minmatarFG; break;
+            case Style.Theme.MinmatarAlt: minmatarFGAlt; break;
+            case Style.Theme.Amarr: amarrFG; break;
+            case Style.Theme.AmarrAlt: amarrFGAlt; break;
+            case Style.Theme.Gallente: gallenteFG; break;
+            case Style.Theme.GallenteAlt: gallenteFGAlt; break;
         }
     }
-
-
 
     readonly property color caldariBG: '#191919'
     readonly property color caldariFG: '#3C5F73'
@@ -104,5 +99,5 @@ Item {
 
     Behavior on background { ColorAnimation { duration: 300; easing.type: Easing.InOutQuad; } }
     Behavior on foreground { ColorAnimation { duration: 300; easing.type: Easing.InOutQuad; } }
-    Behavior on accent { ColorAnimation { duration: 300; easing.type: Easing.InOutQuad; } }
+    // Behavior on accent { ColorAnimation { duration: 300; easing.type: Easing.InOutQuad; } }
 }

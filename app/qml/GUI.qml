@@ -15,5 +15,5 @@ ApplicationWindow {
     minimumHeight: height
     minimumWidth: width
 
-    // color: Style.background
+    color: Style.background
 }

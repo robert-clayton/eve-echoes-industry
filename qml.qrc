@@ -1,7 +1,7 @@
 <RCC>
-  <qresource prefix="/">
-    <file alias='GUI.qml'>GUI.qml</file>
-    <file alias='Style.qml'>Style.qml</file>
-    <file alias='qmldir'>qmldir</file>
+  <qresource>
+    <file alias='GUI.qml'>app/qml/GUI.qml</file>
+    <file alias='Style.qml'>app/qml/Style.qml</file>
+    <file alias='qmldir'>app/qml/qmldir</file>
   </qresource>
 </RCC>

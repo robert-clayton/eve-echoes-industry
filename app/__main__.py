@@ -14,10 +14,10 @@ backend = Backend.Backend()
 engine = QtQml.QQmlApplicationEngine()
 engine.rootContext().setContextProperty("Backend", backend)
 
-try:
+if hasattr(sys, 'frozen'):
     from . import QMLPacked
     engine.load(':/GUI.qml')
-except Exception as e:
+else:
     path = os.path.dirname(os.path.abspath(__file__))
     engine.load(QtCore.QUrl.fromLocalFile(os.path.join(path, 'qml', 'GUI.qml')))
 
