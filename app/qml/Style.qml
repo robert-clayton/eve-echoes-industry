@@ -83,7 +83,7 @@ Item {
     readonly property color grey: '#888D94'
 
     // Icons
-    // readonly property string logoFull: 'qrc:/Icons/logo-optim-full.svg'
+    // readonly property string logoFull: 'qrc:/Icons/logo-full.svg'
 
 
     // Font
