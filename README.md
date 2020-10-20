@@ -1,3 +1,3 @@
 # eve-echoes-industry
 
-`./setup.sh `
+`./setup.sh`
