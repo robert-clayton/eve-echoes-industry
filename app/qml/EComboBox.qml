@@ -1,26 +1,69 @@
 import QtQuick.Controls 2.15
+import QtQuick 2.11
 
 import "qrc:/"
 
 ComboBox {
-    id: comboBox
+    id: control
     font.family: Style.fontRegular
     font.pixelSize: Style.fontTitleSize
-    
+
+    property alias boxWidth: rect.implicitWidth
+    property alias boxHeight: rect.implicitHeight
+    property int textPadding: 25
+
+    background: Rectangle {
+        id: rect
+        color: Style.foreground
+        implicitWidth: 70
+        implicitHeight: 35
+
+        opacity: control.hovered ? 1 : .9
+
+        transitions: Transition { 
+            ColorAnimation { duration: 150; easing.type: Easing.InOutQuad; }
+        }
+    }
+
+    contentItem: ELabel {
+        anchors.fill: parent
+        anchors.leftMargin: control.textPadding
+        text: control.displayText
+        color: 'white'
+        elide: ELabel.ElideRight
+        verticalAlignment: ELabel.AlignVCenter
+    }
+
     delegate: ItemDelegate {
         id: itemDelegate
-        width: comboBox.width
-        text: comboBox.textRole ? (Array.isArray(comboBox.model) ? modelData[comboBox.textRole] : model[comboBox.textRole]) : modelData
-        font.weight: comboBox.currentIndex === index ? comboBox.font.fontBold : comboBox.font.fontRegular
-        highlighted: comboBox.highlightedIndex === index
-        hoverEnabled: comboBox.hoverEnabled
+        width: control.width
+        text: control.textRole ? (Array.isArray(control.model) ? modelData[control.textRole] 
+                                                                 : model[control.textRole]) 
+                                : modelData
+        font.family: control.currentIndex === index ? Style.fontRegular
+                                                     : Style.fontBold
+        font.pixelSize: Style.fontContentSize
+        highlighted: control.highlightedIndex === index
+        hoverEnabled: control.hoverEnabled
+
+        background: Rectangle {
+            id: rectPopup
+            color: control.highlightedIndex === index? Style.foregroundAlt : Style.foreground
+            implicitWidth: 70
+            implicitHeight: 35
+
+            transitions: Transition { ColorAnimation { duration: 150; easing.type: Easing.InOutQuad; }}
+        }
 
         contentItem: ELabel {
+            color: 'white'
+            anchors.fill: parent
             text: itemDelegate.text
-            font: itemDelegate.font
             elide: ELabel.ElideRight
             verticalAlignment: ELabel.AlignVCenter
-            horizontalAlignment: ELabel.AlignHCenter
+            anchors.leftMargin: itemDelegate.highlighted ? control.textPadding : 10
+
+            Behavior on anchors.leftMargin {SmoothedAnimation { duration: 150 }}
         }
     }
 }

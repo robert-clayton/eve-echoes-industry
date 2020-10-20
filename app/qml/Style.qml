@@ -14,17 +14,13 @@ Item {
 
     enum Theme {
         Caldari,
-        CaldariAlt,
         Minmatar,
-        MinmatarAlt,
         Amarr,
-        AmarrAlt,
-        Gallente,
-        GallenteAlt
+        Gallente
     }
 
     // Styling
-    readonly property int radius: 5
+    readonly property int radius: 3
     readonly property int controlWidth: 225
     readonly property int controlHeight: 29
     property int theme: Style.Theme.Caldari
@@ -33,26 +29,36 @@ Item {
     property color background: {
         switch(theme) {
             case Style.Theme.Caldari: caldariBG; break;
-            case Style.Theme.CaldariAlt: caldariBGAlt; break;
             case Style.Theme.Minmatar: minmatarBG; break;
-            case Style.Theme.MinmatarAlt: minmatarBGAlt; break;
             case Style.Theme.Amarr: amarrBG; break;
-            case Style.Theme.AmarrAlt: amarrBGAlt; break;
             case Style.Theme.Gallente: gallenteBG; break;
-            case Style.Theme.GallenteAlt: gallenteBGAlt; break;
+        }
+    }
+
+    property color backgroundAlt: {
+         switch(theme) {
+            case Style.Theme.Caldari: caldariBGAlt; break;
+            case Style.Theme.Minmatar: minmatarBGAlt; break;
+            case Style.Theme.Amarr: amarrBGAlt; break;
+            case Style.Theme.Gallente: gallenteBGAlt; break;
         }
     }
 
     property color foreground: {
         switch(theme) {
             case Style.Theme.Caldari: caldariFG; break;
-            case Style.Theme.CaldariAlt: caldariFGAlt; break;
             case Style.Theme.Minmatar: minmatarFG; break;
-            case Style.Theme.MinmatarAlt: minmatarFGAlt; break;
             case Style.Theme.Amarr: amarrFG; break;
-            case Style.Theme.AmarrAlt: amarrFGAlt; break;
             case Style.Theme.Gallente: gallenteFG; break;
-            case Style.Theme.GallenteAlt: gallenteFGAlt; break;
+        }
+    }
+
+    property color foregroundAlt: {
+        switch(theme) {
+            case Style.Theme.Caldari: caldariFGAlt; break;
+            case Style.Theme.Minmatar: minmatarFGAlt; break;
+            case Style.Theme.Amarr: amarrFGAlt; break;
+            case Style.Theme.Gallente: gallenteFGAlt; break;
         }
     }
 
@@ -85,26 +91,25 @@ Item {
     // Icons
     // readonly property string logoFull: 'qrc:/Icons/logo-full.svg'
 
-
     // Font
-    
     readonly property string fontRegular: evesansneueRegular.name
-    readonly property string fontBold: evesansneueBold.name
+    readonly property string fontBold: evesansneueBold.name // TODO: Name is Eve Sans Neue, needs to be different
     readonly property string fontItalic: evesansneueItalic.name
     readonly property string fontCondensed: evesansneueCondensed.name
-    readonly property int fontContentSize: 11
-    readonly property int fontSubTitleSize: 13
+    readonly property int fontContentSize: 12
+    readonly property int fontSubTitleSize: 14
     readonly property int fontTitleSize: 17
-
     readonly property int headerSize: 32
+
     FontLoader { id: evesansneueRegular; source: '../Fonts/evesansneue-regular.otf' }
     FontLoader { id: evesansneueBold; source: '../Fonts/evesansneue-bold.otf' }
     FontLoader { id: evesansneueItalic; source: '../Fonts/evesansneue-italic.otf' }
     FontLoader { id: evesansneueCondensed; source: '../Fonts/evesansneue-condensed.otf' }
 
-
     // Animations
     readonly property int themeAnimSpeed: 300
     Behavior on background { ColorAnimation { duration: 300; easing.type: Easing.InOutQuad; } }
+    Behavior on backgroundAlt { ColorAnimation { duration: 300; easing.type: Easing.InOutQuad; } }
     Behavior on foreground { ColorAnimation { duration: 300; easing.type: Easing.InOutQuad; } }
+    Behavior on foregroundAlt { ColorAnimation { duration: 300; easing.type: Easing.InOutQuad; } }
 }

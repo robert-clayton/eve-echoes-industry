@@ -14,7 +14,7 @@ class Backend(QtCore.QObject):
         else:
             self.sheetBlueprints = self.loadBlueprintData()
 
-    def transposeBlueprintData(self, blueprintData):
+    def transposeBlueprintData(self, blueprintData: dict):
         temp = defaultdict(dict)
         for blueprint in self.sheetBlueprints:
             name = blueprint.pop('Name', None)
@@ -39,6 +39,10 @@ class Backend(QtCore.QObject):
         with open('blueprints.json', 'r') as f:
             return json.load(f)
     
-    @QtCore.Slot(result="QStringList")
-    def listBlueprints(self):
-        return sorted(self.sheetBlueprints.keys())
+    @QtCore.Slot(str, result='QStringList')
+    def listBlueprintsOfType(self, bpType: str):
+        return sorted([x for x in self.sheetBlueprints.keys() if self.sheetBlueprints[x]['Type'] == bpType])
+
+    @QtCore.Slot(str, result='QVariant')
+    def getBlueprintInfo(self, name: str):
+        return self.sheetBlueprints.get(name, {'invalid': True})

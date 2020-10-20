@@ -2,8 +2,10 @@
   <qresource prefix="/">
     <file alias='GUI'>app/qml/GUI.qml</file>
     <file alias='ELabel'>app/qml/ELabel.qml</file>
+    <file alias='EDataField'>app/qml/EDataField.qml</file>
     <file alias='EButton'>app/qml/EButton.qml</file>
     <file alias='EComboBox'>app/qml/EComboBox.qml</file>
+    <file alias='EFadeAnimation'>app/qml/EFadeAnimation.qml</file>
     <file alias='Style'>app/qml/Style.qml</file>
     <file alias='qmldir'>app/qml/qmldir</file>
   </qresource>
